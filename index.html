@@ -2,67 +2,76 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoodConnect NGO Portal</title>
+<title>ZeroWaste - Request Food</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <header>
-            <div class="logo">Zero<span>Waste</span></div>
-            <nav class="user-types">
-                <button class="active">Donor</button>
-               
-            </nav>
-        </header>
-    <main>
-        
-    <h1 class="logo">Food<span>Connect</span></h1>
+<!-- HEADER -->
+<header class="header">
+  <h1><span class="black">Zero</span><span class="green">Waste</span></h1>
+  <button class="donor-btn">Donor</button>
+</header>
 
-    <!-- Card -->
-    <div class="card">
+<!-- MAIN CONTAINER -->
+<div class="main">
 
-        <h2>Request Food</h2>
-        <p class="subtext">Fill details to request food from donors.</p>
+  <!-- LEFT IMAGE SECTION -->
+  <div class="image-section">
+    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="">
+    <p>Helping reduce food waste and feed communities.</p>
+  </div>
 
-        <form id="foodForm">
+  <!-- FORM CARD -->
+  <div class="card">
+    <h2>Request Food</h2>
+    <p class="subtitle">Fill details to request food from donors.</p>
 
-            <!-- Priority -->
-            <label>Urgency</label>
-            <div class="toggle-group">
-                <button type="button" class="toggle active">Urgent</button>
-                <button type="button" class="toggle">Normal</button>
-            </div>
-
-            <!-- Food Type -->
-            <label>Food Type</label>
-            <select id="foodType">
-                <option>Any</option>
-                <option>Vegetarian</option>
-                <option>Non-Vegetarian</option>
-            </select>
-
-            <!-- Organisation -->
-            <label>Organisation Name</label>
-            <input type="text" id="orgName" placeholder="Enter NGO name">
-
-            <!-- Count -->
-            <label>Beneficiaries Count</label>
-            <input type="number" id="count" placeholder="e.g. 60">
-
-            <!-- Location -->
-            <label>Area / Locality</label>
-            <input type="text" id="area" placeholder="Enter location">
-
-            <!-- Submit -->
-            <button type="submit" class="submit-btn">Submit Request</button>
-
-        </form>
-    </main>
-
+    <!-- URGENCY -->
+    <label>Urgency</label>
+    <div class="toggle">
+      <button class="active" onclick="setUrgency(this)">Urgent</button>
+      <button onclick="setUrgency(this)">Normal</button>
     </div>
 
+    <!-- FOOD TYPE -->
+    <label>Food Type</label>
+    <select>
+      <option>Any</option>
+      <option>Veg</option>
+      <option>Non-Veg</option>
+    </select>
+
+    <!-- NGO NAME -->
+    <label>Organisation Name</label>
+    <input type="text" placeholder="Enter NGO name">
+
+    <!-- COUNT -->
+    <label>Beneficiaries Count</label>
+    <input type="number" placeholder="e.g. 60">
+
+    <!-- LOCATION -->
+    <label>Area / Locality</label>
+    <input type="text" placeholder="Enter location">
+
+    <button class="submit-btn">Submit Request</button>
+  </div>
+
+</div>
+
+<!-- AI CHAT BUTTON -->
+<div class="chat-btn" onclick="toggleChat()">💬</div>
+
+<!-- AI CHAT BOX -->
+<div class="chat-box" id="chatBox">
+  <div class="chat-header">AI Assistant</div>
+  <div class="chat-body" id="chatBody">
+    <p><b>AI:</b> Hello! Need help with food request?</p>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="userInput" placeholder="Type message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
