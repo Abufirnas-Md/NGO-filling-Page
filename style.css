@@ -1,173 +1,74 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial;
-}
-
 body {
-  background: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
+.container {
+    max-width: 450px;
+    margin: 40px auto;
 }
 
-.black { color: black; }
-.green { color: #28a745; }
-
-.donor-btn {
-  border: 1px solid #ccc;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: white;
+.logo {
+    text-align: center;
 }
 
-/* MAIN */
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  padding: 40px;
+.logo span {
+    color: green;
 }
 
-/* IMAGE SECTION */
-.image-section {
-  max-width: 300px;
-}
-
-.image-section img {
-  width: 100%;
-  border-radius: 15px;
-}
-
-.image-section p {
-  margin-top: 10px;
-  color: #555;
-}
-
-/* CARD */
 .card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  width: 350px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
 }
 
-.card h2 {
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #666;
-  margin-bottom: 20px;
-  font-size: 14px;
+.subtext {
+    color: gray;
+    font-size: 14px;
 }
 
 label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
+    display: block;
+    margin-top: 12px;
 }
 
-/* TOGGLE */
-.toggle {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
-.toggle button {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #ddd;
-  cursor: pointer;
+.small-btn {
+    margin-top: 5px;
+    padding: 6px;
+    font-size: 12px;
 }
 
-.toggle .active {
-  background: #28a745;
-  color: white;
-}
-
-/* INPUTS */
-input, select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-/* SUBMIT */
 .submit-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
 }
 
-/* CHAT BUTTON */
-.chat-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #28a745;
-  color: white;
-  padding: 15px;
-  border-radius: 50%;
-  cursor: pointer;
+.hidden {
+    display: none;
 }
 
-/* CHAT BOX */
-.chat-box {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  background: white;
-  border-radius: 10px;
-  display: none;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+/* Success Tick */
+.tick {
+    font-size: 50px;
+    color: green;
+    text-align: center;
+    animation: pop 0.5s ease;
 }
 
-.chat-header {
-  background: #28a745;
-  color: white;
-  padding: 10px;
-  border-radius: 10px 10px 0 0;
-}
-
-.chat-body {
-  height: 200px;
-  padding: 10px;
-  overflow-y: auto;
-}
-
-.chat-input {
-  display: flex;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-}
-
-.chat-input button {
-  background: #28a745;
-  color: white;
-  border: none;
-  padding: 10px;
+@keyframes pop {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
 }
