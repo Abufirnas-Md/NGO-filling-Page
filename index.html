@@ -2,67 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ZeroWaste - Request Food</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NGO Request | FoodConnect</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <h1><span class="black">Zero</span><span class="green">Waste</span></h1>
-  <button class="donor-btn">Donor</button>
-</header>
+<div class="container">
 
+    <h1 class="logo">Food<span>Connect</span></h1>
 
-  <!-- FORM CARD -->
-  <div class="card">
-    <h2>Request Food</h2>
-    <p class="subtitle">Fill details to request food from donors.</p>
+    <div class="card">
+        <h2>Request Food Assistance</h2>
+        <p class="subtext">Submit a request to connect with nearby food donors.</p>
 
-    <!-- URGENCY -->
-    <label>Urgency</label>
-    <div class="toggle">
-      <button class="active" onclick="setUrgency(this)">Urgent</button>
-      <button onclick="setUrgency(this)">Normal</button>
+        <form id="requestForm">
+
+            <!-- NGO Name -->
+            <label>Organisation Name</label>
+            <input type="text" id="orgName" required>
+
+            <!-- Contact -->
+            <label>Contact Number (Request Coordinator)</label>
+            <input type="tel" id="contact" required>
+
+            <!-- Quantity -->
+            <label>Estimated Meal Requirement</label>
+            <input type="text" id="quantity" placeholder="e.g. Meals for 20–30 people" required>
+
+            <!-- Location -->
+            <label>Location</label>
+            <input type="text" id="location" placeholder="Enter manually or use GPS" required>
+            <button type="button" class="small-btn" onclick="getLocation()">Use Current Location</button>
+
+            <!-- Food Preference -->
+            <label>Food Preference</label>
+            <select id="food" required>
+                <option value="">Select</option>
+                <option>Vegetarian</option>
+                <option>Non-Vegetarian</option>
+                <option>Any</option>
+            </select>
+
+            <!-- Delivery -->
+            <label>Pickup Arrangement</label>
+            <select id="delivery" required>
+                <option value="">Select</option>
+                <option>We have a delivery volunteer available</option>
+                <option>Request volunteer pickup</option>
+            </select>
+
+            <!-- Notes -->
+            <label>Additional Notes</label>
+            <textarea id="notes" rows="3" required></textarea>
+
+            <!-- Email -->
+            <label>Email ID</label>
+            <input type="email" id="email" required>
+
+            <!-- CAPTCHA -->
+            <label>Enter CAPTCHA: <span id="captchaText"></span></label>
+            <input type="text" id="captchaInput" required>
+
+            <button type="submit" class="submit-btn">Submit Request</button>
+
+        </form>
+
+        <!-- OTP Section -->
+        <div id="otpSection" class="hidden">
+            <h3>Enter OTP sent to email</h3>
+            <input type="text" id="otpInput">
+            <button onclick="verifyOTP()">Verify OTP</button>
+        </div>
+
+        <!-- Success -->
+        <div id="success" class="hidden">
+            <div class="tick">✔</div>
+            <p>Request Submitted Successfully</p>
+        </div>
+
     </div>
-
-    <!-- FOOD TYPE -->
-    <label>Food Type</label>
-    <select>
-      <option>Any</option>
-      <option>Veg</option>
-    </select>
-
-    <!-- NGO NAME -->
-    <label>Organisation Name</label>
-    <input type="text" placeholder="Enter NGO name">
-
-    <!-- COUNT -->
-    <label>Beneficiaries Count</label>
-    <input type="number" placeholder="e.g. 60">
-
-    <!-- LOCATION -->
-    <label>Place</label>
-    <input type="text" placeholder="Enter location">
-
-    <button class="submit-btn">Submit Request</button>
-  </div>
-
-</div>
-
-<!-- AI CHAT BUTTON -->
-<div class="chat-btn" onclick="toggleChat()">💬</div>
-
-<!-- AI CHAT BOX -->
-<div class="chat-box" id="chatBox">
-  <div class="chat-header">AI Assistant</div>
-  <div class="chat-body" id="chatBody">
-    <p><b>AI:</b> Hello! Need help with food request?</p>
-  </div>
-  <div class="chat-input">
-    <input type="text" id="userInput" placeholder="Type message...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
 </div>
 
 <script src="script.js"></script>
