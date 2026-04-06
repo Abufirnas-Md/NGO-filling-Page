@@ -3,70 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoodConnect - Request Food</title>
-
+<title>FoodConnect NGO Portal</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <div class="logo">Zero<span>Waste</span></div>
-    <div class="nav-links">
-        <span class="active-tab">NGO / Recipient</span>
-    </div>
-</div>
-
-<!-- Main -->
 <div class="container">
 
-    <h1>Request Food</h1>
-    <div class="subtext">
-        Submit a request or browse available donations near you.
-    </div>
+    <h1 class="logo">Food<span>Connect</span></h1>
 
-    <div class="alert">
-        ⚡ 2 urgent donations available within 5 km of your location
-    </div>
-
+    <!-- Card -->
     <div class="card">
-        <h3>New request</h3>
 
-        <div class="form-group">
-            <label>Organisation name</label>
-            <input type="text" id="orgName" placeholder="Enter organisation">
-        </div>
+        <h2>Request Food</h2>
+        <p class="subtext">Fill details to request food from donors.</p>
 
-        <div class="form-group">
-            <label>Beneficiaries count</label>
-            <input type="number" id="count" placeholder="Enter count">
-        </div>
+        <form id="foodForm">
 
-        <div class="form-group">
-            <label>Area / locality</label>
-            <input type="text" id="area" placeholder="Enter location">
-        </div>
-
-        <div class="form-group">
-            <label>Food preference</label>
-            <select id="foodPref">
-                <option>Any (vegetarian or non-veg)</option>
-                <option>Vegetarian only</option>
-                <option>Non-Vegetarian only</option>
-            </select>
-        </div>
-
-        <div class="form-group">
+            <!-- Priority -->
             <label>Urgency</label>
-            <select id="urgency">
-                <option>Within 2 hours</option>
-                <option>Within 6 hours</option>
-                <option>Today</option>
-            </select>
-        </div>
+            <div class="toggle-group">
+                <button type="button" class="toggle active">Urgent</button>
+                <button type="button" class="toggle">Normal</button>
+            </div>
 
-        <button onclick="submitForm()">Submit request</button>
+            <!-- Food Type -->
+            <label>Food Type</label>
+            <select id="foodType">
+                <option>Any</option>
+                <option>Vegetarian</option>
+                <option>Non-Vegetarian</option>
+            </select>
+
+            <!-- Organisation -->
+            <label>Organisation Name</label>
+            <input type="text" id="orgName" placeholder="Enter NGO name">
+
+            <!-- Count -->
+            <label>Beneficiaries Count</label>
+            <input type="number" id="count" placeholder="e.g. 60">
+
+            <!-- Location -->
+            <label>Area / Locality</label>
+            <input type="text" id="area" placeholder="Enter location">
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn">Submit Request</button>
+
+        </form>
+
     </div>
 
 </div>
