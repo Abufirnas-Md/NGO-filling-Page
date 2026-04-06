@@ -1,28 +1,27 @@
-// Toggle buttons
-const toggles = document.querySelectorAll(".toggle");
+function setUrgency(btn) {
+  let buttons = document.querySelectorAll(".toggle button");
+  buttons.forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+}
 
-toggles.forEach(btn => {
-    btn.addEventListener("click", () => {
-        toggles.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-    });
-});
+function toggleChat() {
+  let box = document.getElementById("chatBox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
 
-// Form submit
-document.getElementById("foodForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+function sendMessage() {
+  let input = document.getElementById("userInput");
+  let chat = document.getElementById("chatBody");
 
-    const org = document.getElementById("orgName").value;
-    const count = document.getElementById("count").value;
-    const area = document.getElementById("area").value;
+  if (input.value.trim() === "") return;
 
-    if (!org || !count || !area) {
-        alert("Please fill all fields!");
-        return;
-    }
+  chat.innerHTML += `<p><b>You:</b> ${input.value}</p>`;
 
-    alert("✅ Request Submitted!");
+  // Simple AI reply
+  setTimeout(() => {
+    chat.innerHTML += `<p><b>AI:</b> We will help you find food donors soon.</p>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 500);
 
-    // Clear form
-    this.reset();
-});
+  input.value = "";
+}
