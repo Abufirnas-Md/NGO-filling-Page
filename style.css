@@ -20,6 +20,33 @@ body {
 .logo span {
     color: #28a745;
 }
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+}
+
+.green {
+  color: #28a745;
+}
+
+.donor-btn {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+}
 
 /* Card */
 .card {
