@@ -3,87 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NGO Request | FoodConnect</title>
+<title>FoodConnect NGO Request</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+<main class="container">
 
     <h1 class="logo">Food<span>Connect</span></h1>
 
-    <div class="card">
-        <h2>Request Food Assistance</h2>
-        <p class="subtext">Submit a request to connect with nearby food donors.</p>
+    <section class="card" aria-labelledby="formTitle">
+        <h2 id="formTitle">Request Food Assistance</h2>
+        <p class="subtext">Connect with nearby donors efficiently.</p>
 
-        <form id="requestForm">
+        <form id="requestForm" novalidate>
 
-            <!-- NGO Name -->
-            <label>Organisation Name</label>
-            <input type="text" id="orgName" required>
+            <!-- NGO -->
+            <div class="field">
+                <label for="org">Organisation Name</label>
+                <input id="org" type="text" required>
+            </div>
 
-            <!-- Contact -->
-            <label>Contact Number (Request Coordinator)</label>
-            <input type="tel" id="contact" required>
+            <div class="field">
+                <label for="phone">Contact Number</label>
+                <input id="phone" type="tel" required>
+            </div>
 
-            <!-- Quantity -->
-            <label>Estimated Meal Requirement</label>
-            <input type="text" id="quantity" placeholder="e.g. Meals for 20–30 people" required>
+            <div class="field">
+                <label for="quantity">Meal Requirement</label>
+                <input id="quantity" placeholder="Meals for 20–30 people" required>
+            </div>
 
-            <!-- Location -->
-            <label>Location</label>
-            <input type="text" id="location" placeholder="Enter manually or use GPS" required>
-            <button type="button" class="small-btn" onclick="getLocation()">Use Current Location</button>
+            <div class="field">
+                <label for="location">Location</label>
+                <input id="location" required>
+                <button type="button" class="link-btn" onclick="getLocation()">Use GPS</button>
+            </div>
 
-            <!-- Food Preference -->
-            <label>Food Preference</label>
-            <select id="food" required>
-                <option value="">Select</option>
-                <option>Vegetarian</option>
-                <option>Non-Vegetarian</option>
-                <option>Any</option>
-            </select>
+            <div class="field">
+                <label for="delivery">Pickup Option</label>
+                <select id="delivery" required>
+                    <option value="">Select</option>
+                    <option>We have a volunteer for pickup</option>
+                    <option>Request volunteer pickup</option>
+                </select>
+            </div>
 
-            <!-- Delivery -->
-            <label>Pickup Arrangement</label>
-            <select id="delivery" required>
-                <option value="">Select</option>
-                <option>We have a delivery volunteer available</option>
-                <option>Request volunteer pickup</option>
-            </select>
+            <div class="field">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" rows="2" required></textarea>
+            </div>
 
-            <!-- Notes -->
-            <label>Additional Notes</label>
-            <textarea id="notes" rows="3" required></textarea>
+            <!-- EMAIL STEP -->
+            <div class="field">
+                <label for="email">Official Email</label>
+                <input id="email" type="email" required>
+            </div>
 
-            <!-- Email -->
-            <label>Email ID</label>
-            <input type="email" id="email" required>
+            <!-- CAPTCHA appears AFTER email -->
+            <div class="field hidden" id="captchaBox">
+                <label>Enter Code: <span id="captchaText"></span></label>
+                <input id="captchaInput">
+            </div>
 
-            <!-- CAPTCHA -->
-            <label>Enter CAPTCHA: <span id="captchaText"></span></label>
-            <input type="text" id="captchaInput" required>
-
-            <button type="submit" class="submit-btn">Submit Request</button>
+            <button id="submitBtn" disabled>Submit Request</button>
 
         </form>
 
-        <!-- OTP Section -->
-        <div id="otpSection" class="hidden">
-            <h3>Enter OTP sent to email</h3>
-            <input type="text" id="otpInput">
-            <button onclick="verifyOTP()">Verify OTP</button>
+        <!-- OTP -->
+        <div id="otpBox" class="hidden">
+            <h3>Verify OTP</h3>
+            <input id="otpInput" placeholder="Enter OTP">
+            <button onclick="verifyOTP()">Verify</button>
         </div>
 
-        <!-- Success -->
+        <!-- SUCCESS -->
         <div id="success" class="hidden">
-            <div class="tick">✔</div>
-            <p>Request Submitted Successfully</p>
+            <div class="check"></div>
+            <p>Request placed successfully</p>
         </div>
 
-    </div>
-</div>
+    </section>
+</main>
 
 <script src="script.js"></script>
 </body>
