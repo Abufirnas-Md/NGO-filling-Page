@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodConnect - Request Food</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">Zero<span>Waste</span></div>
+    <div class="nav-links">
+        <span class="active-tab">NGO / Recipient</span>
+    </div>
+</div>
+
+<!-- Main -->
+<div class="container">
+
+    <h1>Request Food</h1>
+    <div class="subtext">
+        Submit a request or browse available donations near you.
+    </div>
+
+    <div class="alert">
+        ⚡ 2 urgent donations available within 5 km of your location
+    </div>
+
+    <div class="card">
+        <h3>New request</h3>
+
+        <div class="form-group">
+            <label>Organisation name</label>
+            <input type="text" id="orgName" placeholder="Enter organisation">
+        </div>
+
+        <div class="form-group">
+            <label>Beneficiaries count</label>
+            <input type="number" id="count" placeholder="Enter count">
+        </div>
+
+        <div class="form-group">
+            <label>Area / locality</label>
+            <input type="text" id="area" placeholder="Enter location">
+        </div>
+
+        <div class="form-group">
+            <label>Food preference</label>
+            <select id="foodPref">
+                <option>Any (vegetarian or non-veg)</option>
+                <option>Vegetarian only</option>
+                <option>Non-Vegetarian only</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Urgency</label>
+            <select id="urgency">
+                <option>Within 2 hours</option>
+                <option>Within 6 hours</option>
+                <option>Today</option>
+            </select>
+        </div>
+
+        <button onclick="submitForm()">Submit request</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
