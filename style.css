@@ -4,22 +4,6 @@ body {
     margin: 0;
 }
 
-/* Center layout */
-.container {
-    max-width: 450px;
-    margin: 60px auto;
-    text-align: center;
-}
-
-/* Logo */
-.logo {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.logo span {
-    color: #28a745;
-}
 /* Header */
 .header {
   display: flex;
@@ -46,6 +30,24 @@ body {
   padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+
+/* Center layout */
+.container {
+    max-width: 450px;
+    margin: 60px auto;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.logo span {
+    color: #28a745;
 }
 
 /* Card */
