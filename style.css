@@ -1,126 +1,173 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f8;
-    margin: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
 }
 
-/* Header */
+body {
+  background: #f4f4f4;
+}
+
+/* HEADER */
 .header {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
+  padding: 20px;
 }
 
-.header h1 {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.black {
-  color: black;
-}
-
-.green {
-  color: #28a745;
-}
+.black { color: black; }
+.green { color: #28a745; }
 
 .donor-btn {
   border: 1px solid #ccc;
-  background: white;
   padding: 6px 14px;
   border-radius: 20px;
+  background: white;
+}
+
+/* MAIN */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+/* IMAGE SECTION */
+.image-section {
+  max-width: 300px;
+}
+
+.image-section img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.image-section p {
+  margin-top: 10px;
+  color: #555;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+/* TOGGLE */
+.toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.toggle button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ddd;
   cursor: pointer;
 }
 
-
-/* Center layout */
-.container {
-    max-width: 450px;
-    margin: 60px auto;
-    text-align: center;
+.toggle .active {
+  background: #28a745;
+  color: white;
 }
 
-/* Logo */
-.logo {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.logo span {
-    color: #28a745;
-}
-
-/* Card */
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    text-align: left;
-}
-
-/* Text */
-h2 {
-    margin-bottom: 5px;
-}
-
-.subtext {
-    color: gray;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-/* Inputs */
-label {
-    font-size: 14px;
-    margin-top: 15px;
-    display: block;
-}
-
+/* INPUTS */
 input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
-/* Toggle buttons */
-.toggle-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.toggle {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: #f1f1f1;
-    cursor: pointer;
-}
-
-.toggle.active {
-    background: #28a745;
-    color: white;
-    border: none;
-}
-
-/* Submit button */
+/* SUBMIT */
 .submit-btn {
-    margin-top: 20px;
-    width: 100%;
-    padding: 12px;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.submit-btn:hover {
-    background: #218838;
+/* CHAT BUTTON */
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* CHAT BOX */
+.chat-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  display: none;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.chat-header {
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.chat-body {
+  height: 200px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+.chat-input button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
 }
