@@ -1,27 +1,47 @@
-function setUrgency(btn) {
-  let buttons = document.querySelectorAll(".toggle button");
-  buttons.forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
+// CAPTCHA
+let captcha = Math.random().toString(36).substring(2, 7);
+document.getElementById("captchaText").innerText = captcha;
+
+// Location
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(pos => {
+        document.getElementById("location").value =
+            pos.coords.latitude + ", " + pos.coords.longitude;
+    });
 }
 
-function toggleChat() {
-  let box = document.getElementById("chatBox");
-  box.style.display = box.style.display === "block" ? "none" : "block";
-}
+// Form Submit
+document.getElementById("requestForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-function sendMessage() {
-  let input = document.getElementById("userInput");
-  let chat = document.getElementById("chatBody");
+    const captchaInput = document.getElementById("captchaInput").value;
 
-  if (input.value.trim() === "") return;
+    if (captchaInput !== captcha) {
+        alert("Invalid CAPTCHA");
+        return;
+    }
 
-  chat.innerHTML += `<p><b>You:</b> ${input.value}</p>`;
+    // Show OTP section
+    document.getElementById("otpSection").classList.remove("hidden");
 
-  // Simple AI reply
-  setTimeout(() => {
-    chat.innerHTML += `<p><b>AI:</b> We will help you find food donors soon.</p>`;
-    chat.scrollTop = chat.scrollHeight;
-  }, 500);
+    // Generate OTP
+    window.generatedOTP = Math.floor(100000 + Math.random() * 900000);
+    alert("OTP sent: " + window.generatedOTP); // simulate email
+});
 
-  input.value = "";
+// Verify OTP
+function verifyOTP() {
+    const userOTP = document.getElementById("otpInput").value;
+
+    if (userOTP == window.generatedOTP) {
+        document.getElementById("otpSection").classList.add("hidden");
+        document.getElementById("success").classList.remove("hidden");
+
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
+
+    } else {
+        alert("Invalid OTP");
+    }
 }
