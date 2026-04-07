@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodConnect Donor Donation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="container">
+    <h1 class="logo">Food<span>Connect</span></h1>
+
+    <section class="card" aria-labelledby="formTitle">
+        <h2 id="formTitle">Providing Food</h2>
+        <p class="subtext">Connect with Food Connect.</p>
+
+        <form id="requestForm" novalidate>
+            <!-- Donor -->
+            <div class="field">
+                <label for="org">Donor Name</label>
+                <input id="org" type="text" required>
+            </div>
+
+            <div class="field">
+                <label for="phone">Contact Number</label>
+                <input id="phone" type="tel" required>
+            </div>
+
+            <div class="field">
+                <label for="quantity">Food Quantity</label>
+                <input id="quantity" placeholder="Meals for 20–30 people" required>
+            </div>
+
+            <!-- Food Type -->
+            <div class="field">
+                <label for="foodType">Food Type</label>
+                <select id="foodType" required onchange="toggleOtherFood()">
+                    <option value="">Select</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="Snacks">Snacks</option>
+                    <option value="Drinks">Drinks</option>
+                    <option value="Rice">Rice</option>
+                    <option value="Bread">Bread</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Juice">Juice</option>
+                    <option value="Sweets">Sweets</option>
+                    <option value="Other">Other</option>
+                </select>
+                <!-- Hidden by default -->
+                <input id="foodOther" type="text" placeholder="If Other, specify here" class="hidden">
+            </div>
+
+            <!-- Location (no GPS button now) -->
+            <div class="field">
+                <label for="location">Location</label>
+                <input id="location" required>
+            </div>
+
+            <!-- Pickup Option -->
+            <div class="field">
+                <label for="delivery">Pickup Option</label>
+                <select id="delivery" required>
+                    <option value="">Select</option>
+                    <option>Self Delivered by Donor</option>
+                    <option>Delivery Boy (if NGO has)</option>
+                    <option>Volunteer (only acceptable by NGO)</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" rows="2" required></textarea>
+            </div>
+
+            <div class="field">
+                <label for="cookedTime">Cooked Time</label>
+                <input id="cookedTime" type="time" required>
+            </div>
+
+            <!-- EMAIL STEP -->
+            <div class="field">
+                <label for="email">Official Email</label>
+                <input id="email" type="email" required>
+            </div>
+
+            <!-- CAPTCHA appears AFTER email -->
+            <div class="field hidden" id="captchaBox">
+                <label>Enter Code: <span id="captchaText"></span></label>
+                <input id="captchaInput">
+            </div>
+
+            <button id="submitBtn" disabled>Submit Request</button>
+        </form>
+
+        <!-- OTP -->
+        <div id="otpBox" class="hidden">
+            <h3>Verify OTP</h3>
+            <input id="otpInput" placeholder="Enter OTP">
+            <button onclick="verifyOTP()">Verify</button>
+        </div>
+
+        <!-- SUCCESS -->
+        <div id="success" class="hidden">
+            <div class="check"></div>
+            <p>Request placed successfully</p>
+        </div>
+    </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
