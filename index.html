@@ -1,119 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FoodConnect NGO Portal</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodConnect – NGO Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
-<main class="container">
-    <h1 class="logo">Food<span>Connect</span></h1>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <i class="fas fa-utensils logo-icon"></i>
+        <span class="logo-text">FoodConnect</span>
+      </div>
+      <nav class="header-nav">
+        <a href="#" class="nav-link active" data-page="request"><i class="fas fa-file-alt"></i> Request Food</a>
+        <a href="#" class="nav-link" data-page="dashboard"><i class="fas fa-th-list"></i> Dashboard</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="card" aria-labelledby="formTitle">
-        <h2 id="formTitle">Providing Food</h2>
-        <p class="subtext">Connect with Food Connect.</p>
+  <!-- ===== PAGE: REQUEST FORM ===== -->
+  <main id="page-request" class="page active">
+    <div class="page-hero">
+      <h1>NGO Food Request</h1>
+      <p>Submit your organisation's food requirement to FoodConnect.</p>
+    </div>
 
-        <form id="requestForm" novalidate>
-            <!-- Donor -->
-            <div class="field">
-                <label for="org">Organisation Name</label>
-                <input id="org" type="text" required>
-            </div>
-            <div class="field">
-                <label for="org">Manager Contact No:</label>
-                <input id="org" type="text" required>
-            </div>
+    <div class="card-container">
 
-            <div class="field">
-                <label for="phone">Contact Number</label>
-                <input id="phone" type="tel" required>
-            </div>
-
-            <div class="field">
-                <label for="quantity">Food Quantity</label>
-                <input id="quantity" placeholder="Meals for 20–30 people" required>
-            </div>
-
-            <!-- Food Type -->
-            <div class="field">
-                <label for="foodType">Food Type</label>
-                <select id="foodType" required onchange="toggleOtherFood()">
-                    <option value="">Select</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Non-Vegetarian">Non-Vegetarian</option>
-                    <option value="Snacks">Snacks</option>
-                    <option value="Drinks">Drinks</option>
-                    <option value="Rice">Rice</option>
-                    <option value="Bread">Bread</option>
-                    <option value="Fruits">Fruits</option>
-                    <option value="Vegetables">Vegetables</option>
-                    <option value="Juice">Juice</option>
-                    <option value="Sweets">Sweets</option>
-                    <option value="Other">Other</option>
-                </select>
-                <!-- Hidden by default -->
-                <input id="foodOther" type="text" placeholder="If Other, specify here" class="hidden">
-            </div>
-
-            <!-- Location (no GPS button now) -->
-            <div class="field">
-                <label for="location">Location</label>
-                <input id="location" required>
-            </div>
-
-            <!-- Pickup Option -->
-            <div class="field">
-                <label for="delivery">Pickup Option</label>
-                <select id="delivery" required>
-                    <option value="">Select</option>
-                    <option>Self Delivered by Donor</option>
-                    <option>Delivery Boy (if NGO has)</option>
-                    <option>Volunteer (only acceptable by NGO)</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label for="notes">Additional Notes</label>
-                <textarea id="notes" rows="2" required></textarea>
-            </div>
-
-            <div class="field">
-                <label for="cookedTime">Cooked Time</label>
-                <input id="cookedTime" type="time" required>
-            </div>
-
-            <!-- EMAIL STEP -->
-            <div class="field">
-                <label for="email">Official Email</label>
-                <input id="email" type="email" required>
-            </div>
-
-            <!-- CAPTCHA appears AFTER email -->
-            <div class="field hidden" id="captchaBox">
-                <label>Enter Code: <span id="captchaText"></span></label>
-                <input id="captchaInput">
-            </div>
-
-            <button id="submitBtn" disabled>Submit Request</button>
-        </form>
-
-        <!-- OTP -->
-        <div id="otpBox" class="hidden">
-            <h3>Verify OTP</h3>
-            <input id="otpInput" placeholder="Enter OTP">
-            <button onclick="verifyOTP()">Verify</button>
+      <!-- STEP 1: Organisation Info -->
+      <section class="form-card" id="card-org">
+        <div class="card-header">
+          <span class="step-badge">1</span>
+          <h2>Organisation Details</h2>
         </div>
-
-        <!-- SUCCESS -->
-        <div id="success" class="hidden">
-            <div class="check"></div>
-            <p>Request placed successfully</p>
+        <div class="card-body">
+          <div class="field-group">
+            <label for="orgName"><i class="fas fa-building"></i> Organisation Name <span class="req">*</span></label>
+            <input type="text" id="orgName" placeholder="e.g. Hope Hands Foundation" />
+          </div>
+          <div class="field-group">
+            <label for="orgEmail"><i class="fas fa-envelope"></i> Official Email <span class="req">*</span></label>
+            <input type="email" id="orgEmail" placeholder="info@hopehands.org" />
+          </div>
+          <div class="field-group">
+            <label for="managerPhone"><i class="fas fa-phone"></i> Manager Contact Number <span class="req">*</span></label>
+            <input type="tel" id="managerPhone" placeholder="+91 98765 43210" />
+          </div>
         </div>
-    </section>
-</main>
+      </section>
 
-<script src="script.js"></script>
+      <!-- STEP 2: Beneficiaries -->
+      <section class="form-card" id="card-ben">
+        <div class="card-header">
+          <span class="step-badge">2</span>
+          <h2>Beneficiaries Count</h2>
+        </div>
+        <div class="card-body">
+          <div class="field-group">
+            <label for="benCount"><i class="fas fa-users"></i> Number of Beneficiaries <span class="req">*</span></label>
+            <input type="number" id="benCount" min="1" placeholder="e.g. 150" />
+          </div>
+          <div class="field-group">
+            <label for="benType"><i class="fas fa-child"></i> Beneficiary Type</label>
+            <select id="benType">
+              <option value="">Select Type</option>
+              <option value="children">Children</option>
+              <option value="elderly">Elderly</option>
+              <option value="homeless">Homeless Individuals</option>
+              <option value="disaster">Disaster Victims</option>
+              <option value="mixed">Mixed / General</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3: Location -->
+      <section class="form-card" id="card-loc">
+        <div class="card-header">
+          <span class="step-badge">3</span>
+          <h2>Place of Food Need</h2>
+        </div>
+        <div class="card-body">
+          <div class="field-group">
+            <label for="address"><i class="fas fa-map-marker-alt"></i> Full Address <span class="req">*</span></label>
+            <input type="text" id="address" placeholder="Street, Area, City" />
+          </div>
+          <div class="field-group">
+            <label for="landmark"><i class="fas fa-location-dot"></i> Landmark (Optional)</label>
+            <input type="text" id="landmark" placeholder="Near Bus Stand, School etc." />
+          </div>
+          <div class="field-group">
+            <label for="pincode"><i class="fas fa-map-pin"></i> Pincode <span class="req">*</span></label>
+            <input type="text" id="pincode" maxlength="6" placeholder="600001" />
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 4: Food Preferences -->
+      <section class="form-card" id="card-food">
+        <div class="card-header">
+          <span class="step-badge">4</span>
+          <h2>Food Preferences</h2>
+        </div>
+        <div class="card-body">
+          <div class="field-group">
+            <label><i class="fas fa-leaf"></i> Food Type Preference <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-card" id="rc-veg">
+                <input type="radio" name="foodPref" value="veg" />
+                <span class="radio-icon">🥦</span>
+                <span>Vegetarian Only</span>
+              </label>
+              <label class="radio-card" id="rc-any">
+                <input type="radio" name="foodPref" value="any" />
+                <span class="radio-icon">🍱</span>
+                <span>Any (Veg &amp; Non-Veg)</span>
+              </label>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="specialNotes"><i class="fas fa-note-sticky"></i> Special Dietary Notes</label>
+            <textarea id="specialNotes" rows="3" placeholder="e.g. No pork, no nuts, need soft food for elderly..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 5: Priority -->
+      <section class="form-card" id="card-priority">
+        <div class="card-header">
+          <span class="step-badge">5</span>
+          <h2>Request Priority</h2>
+        </div>
+        <div class="card-body">
+          <div class="field-group">
+            <label><i class="fas fa-clock"></i> Urgency Level <span class="req">*</span></label>
+            <div class="priority-group">
+              <label class="priority-card urgent" id="pc-urgent">
+                <input type="radio" name="priority" value="urgent" />
+                <i class="fas fa-fire"></i>
+                <strong>Urgent</strong>
+                <small>Need within 3–6 hours</small>
+              </label>
+              <label class="priority-card normal" id="pc-normal">
+                <input type="radio" name="priority" value="normal" />
+                <i class="fas fa-calendar-check"></i>
+                <strong>Normal</strong>
+                <small>Within 24–48 hours</small>
+              </label>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="neededBy"><i class="fas fa-calendar-alt"></i> Needed By Date/Time</label>
+            <input type="datetime-local" id="neededBy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SUBMIT BUTTON -->
+      <div class="submit-area">
+        <button class="btn-submit" id="btnOpenDelivery">
+          <i class="fas fa-paper-plane"></i> Submit Food Request
+        </button>
+        <p class="submit-hint">All fields marked <span class="req">*</span> are required</p>
+      </div>
+
+    </div><!-- end card-container -->
+  </main>
+
+  <!-- ===== PAGE: DASHBOARD ===== -->
+  <main id="page-dashboard" class="page">
+    <div class="page-hero">
+      <h1>NGO Dashboard</h1>
+      <p>Your submitted requests and community food requests are listed below.</p>
+    </div>
+
+    <div class="dashboard-container">
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-box">
+          <i class="fas fa-hourglass-half"></i>
+          <div><strong id="stat-pending">0</strong><span>Pending</span></div>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-truck"></i>
+          <div><strong id="stat-active">2</strong><span>In Transit</span></div>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-circle-check"></i>
+          <div><strong id="stat-done">5</strong><span>Fulfilled</span></div>
+        </div>
+        <div class="stat-box">
+          <i class="fas fa-users"></i>
+          <div><strong id="stat-fed">340</strong><span>People Fed</span></div>
+        </div>
+      </div>
+
+      <!-- YOUR Requests -->
+      <h3 class="dash-section-title"><i class="fas fa-star"></i> Your Requests</h3>
+      <div id="my-requests-list" class="requests-grid">
+        <!-- populated by JS -->
+      </div>
+
+      <!-- Community Requests -->
+      <h3 class="dash-section-title"><i class="fas fa-globe"></i> Community Requests (Other NGOs)</h3>
+      <div id="community-requests-list" class="requests-grid">
+        <!-- populated by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== MODAL: Delivery Person Email ===== -->
+  <div class="modal-overlay" id="modal-delivery">
+    <div class="modal-box">
+      <div class="modal-icon"><i class="fas fa-motorcycle"></i></div>
+      <h3>Delivery Person Verification</h3>
+      <p>Enter the email address of the assigned delivery person to proceed.</p>
+      <div class="field-group">
+        <label for="deliveryEmail"><i class="fas fa-envelope"></i> Delivery Person Email</label>
+        <input type="email" id="deliveryEmail" placeholder="delivery@foodconnect.in" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnCancelDelivery">Cancel</button>
+        <button class="btn-primary" id="btnSendCaptcha">Send Captcha <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: CAPTCHA ===== -->
+  <div class="modal-overlay" id="modal-captcha">
+    <div class="modal-box">
+      <div class="modal-icon captcha-icon"><i class="fas fa-robot"></i></div>
+      <h3>Human Verification</h3>
+      <p>Type the code shown below to verify. A captcha was sent to the delivery person.</p>
+      <div class="captcha-display" id="captchaDisplay"></div>
+      <div class="field-group">
+        <label for="captchaInput"><i class="fas fa-keyboard"></i> Enter Code</label>
+        <input type="text" id="captchaInput" placeholder="Type the code above" maxlength="6" autocomplete="off" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnBackToDelivery"><i class="fas fa-arrow-left"></i> Back</button>
+        <button class="btn-primary" id="btnVerifyCaptcha">Verify <i class="fas fa-check"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: OTP ===== -->
+  <div class="modal-overlay" id="modal-otp">
+    <div class="modal-box">
+      <div class="modal-icon otp-icon"><i class="fas fa-shield-halved"></i></div>
+      <h3>Enter OTP</h3>
+      <p>A 6-digit OTP has been sent to the delivery person's email. Enter it below.</p>
+      <div class="otp-boxes" id="otp-boxes">
+        <input type="text" class="otp-digit" maxlength="1" />
+        <input type="text" class="otp-digit" maxlength="1" />
+        <input type="text" class="otp-digit" maxlength="1" />
+        <input type="text" class="otp-digit" maxlength="1" />
+        <input type="text" class="otp-digit" maxlength="1" />
+        <input type="text" class="otp-digit" maxlength="1" />
+      </div>
+      <p class="resend-hint">Didn't receive? <span class="resend-link" id="btnResendOtp">Resend OTP</span></p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btnBackToCaptcha"><i class="fas fa-arrow-left"></i> Back</button>
+        <button class="btn-primary" id="btnVerifyOtp">Submit Request <i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: SUCCESS ===== -->
+  <div class="modal-overlay" id="modal-success">
+    <div class="modal-box success-box">
+      <div class="success-circle"><i class="fas fa-check"></i></div>
+      <h3>Request Submitted!</h3>
+      <p>Your food request has been placed successfully. Our team will coordinate delivery soon.</p>
+      <div class="success-ref" id="success-ref-num"></div>
+      <button class="btn-primary full-width" id="btnGoToDashboard">
+        <i class="fas fa-th-list"></i> View Dashboard
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
